@@ -1,0 +1,24 @@
+﻿<Window x:Class="VeksiBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:VeksiBox"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="525"
+        Height="350"
+        mc:Ignorable="d">
+    <Grid>
+        <local:BalloonControl>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <GroupBox Header="Stuff" />
+                <GroupBox Grid.Row="1"
+                          Header="More Stuff" />
+            </Grid>
+        </local:BalloonControl>
+    </Grid>
+</Window>
