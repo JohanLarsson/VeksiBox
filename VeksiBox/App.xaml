@@ -4,24 +4,29 @@
              xmlns:local="clr-namespace:VeksiBox"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="{x:Type local:BalloonControl}">
+        <Style x:Key="BalloonPopupStyle"
+               TargetType="{x:Type local:BalloonControl}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:BalloonControl}">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Path Grid.Row="0"
-                                  Width="25"
-                                  Margin="0,0,0,-3"
-                                  Panel.ZIndex="1"
-                                  Data="M-1,1 L0,0 1,1"
-                                  Fill="White"
-                                  Stretch="Fill"
-                                  Stroke="CornflowerBlue"
-                                  StrokeThickness="2" />
+                            <Canvas Height="12.5"
+                                    Panel.ZIndex="1">
+                                <Path Canvas.Right="{Binding HorizontalOffset,
+                                                             RelativeSource={RelativeSource AncestorType={x:Type Popup}}}"
+                                      Canvas.Bottom="-3"
+                                      Width="25"
+                                      Height="12.5"
+                                      Data="M-1,1 L0,0 1,1"
+                                      Fill="White"
+                                      Stretch="Fill"
+                                      Stroke="CornflowerBlue"
+                                      StrokeThickness="2" />
+                            </Canvas>
                             <Border Grid.Row="1"
                                     BorderBrush="CornflowerBlue"
                                     BorderThickness="2"

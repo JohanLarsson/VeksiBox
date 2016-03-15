@@ -9,16 +9,32 @@
         Height="350"
         mc:Ignorable="d">
     <Grid>
-        <local:BalloonControl>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <GroupBox Header="Stuff" />
-                <GroupBox Grid.Row="1"
-                          Header="More Stuff" />
-            </Grid>
-        </local:BalloonControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <CheckBox x:Name="ShowPopupBox"
+                  HorizontalAlignment="Center"
+                  IsChecked="True" />
+        <Popup AllowsTransparency="True"
+               HorizontalOffset="60"
+               IsOpen="{Binding IsChecked,
+                                ElementName=ShowPopupBox}"
+               Placement="Bottom"
+               PlacementTarget="{Binding ElementName=ShowPopupBox}">
+            <local:BalloonControl Style="{StaticResource BalloonPopupStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Stuff">
+                        <TextBlock Text="random long text" />
+                    </GroupBox>
+                    <GroupBox Grid.Row="1"
+                              Header="More Stuff" />
+                </Grid>
+            </local:BalloonControl>
+        </Popup>
     </Grid>
 </Window>
